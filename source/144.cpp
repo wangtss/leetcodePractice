@@ -15,3 +15,21 @@ vector<int> preorderTraversal(TreeNode* root) {
 	}
 	return result;
 }
+
+vector<int> preorderTraversal(TreeNode* root) {
+	vector<int> result;
+	stack<TreeNode*> pre_order;
+	while (root || !pre_order.empty()) {
+		if (root) {
+			result.push_back(root->val);
+			pre_order.push(root);
+			root = root->left;
+		}
+		else {
+			root = pre_order.top();
+			pre_order.pop();
+			root = root->right;
+		}
+	}
+	return result;
+}
